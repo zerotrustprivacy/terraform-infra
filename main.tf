@@ -99,8 +99,10 @@ resource "azurerm_linux_virtual_machine" "vm" {
   ]
 
   # Best practice is to use SSH keys, but for this lab, we'll use a password.
-  admin_password                = "$securePassword$"
-  disable_password_authentication = false
+admin_ssh_key {
+    username   = "labadmin"
+    public_key = "PUBLIC_KEY_HERE"
+  }
 
  os_disk {
     caching              = "ReadWrite"
